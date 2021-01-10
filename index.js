@@ -17,11 +17,11 @@ const displayDate = () => {
   })
 }
 
-const getToDo = (e) => {
+const addToDo = (e) => {
   if (e.key === "Enter") {
     const { value } = e.target
     if (value.trim().length > 0) {
-      const currArr = JSON.parse(window.localStorage.getItem("to-do"))
+      const currArr = JSON.parse(window.localStorage.getItem("to-do")) || []
       const newArr = [...currArr, value]
       window.localStorage.setItem("to-do", JSON.stringify(newArr))
       render(newArr)
@@ -52,5 +52,5 @@ render(JSON.parse(window.localStorage.getItem("to-do")) || [])
 
 // event listeners
 searchBar.addEventListener("keyup", doSearch)
-toDoInput.addEventListener("keyup", getToDo)
+toDoInput.addEventListener("keyup", addToDo)
 clearBtn.addEventListener("click", clearToDo)
