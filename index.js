@@ -6,6 +6,7 @@ const todaysDate = document.getElementById("todays-date")
 const searchBar = document.getElementById("search-bar")
 const toDoInput = document.getElementById("to-do-add")
 const clearBtn = document.getElementById("clear-btn")
+const mantraDisplay = document.getElementById("mantra")
 
 // functions
 const displayDate = () => {
@@ -15,6 +16,16 @@ const displayDate = () => {
     year: "numeric",
     day: "numeric",
   })
+}
+
+const displayMantra = async () => {
+  const mantraId = Math.floor(Math.random() * 35)
+  const res = await fetch(
+    `https://calm-journey-64194.herokuapp.com/${mantraId}`
+  )
+  const mantra = await res.json()
+  console.log(mantra)
+  mantraDisplay.innerHTML = mantra
 }
 
 const addToDo = (e) => {
@@ -52,6 +63,7 @@ const clearToDo = (e) => {
 
 // first render
 displayDate()
+displayMantra()
 render(JSON.parse(window.localStorage.getItem("to-do")) || [])
 
 // event listeners

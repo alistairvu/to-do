@@ -33,6 +33,12 @@ body {
   color: white;
 }
 
+#container p {
+  padding: 5px 30px;
+  color: white;
+  font-style: italic;
+}
+
 #container input {
   width: 70%;
   padding: 10px 30px;
