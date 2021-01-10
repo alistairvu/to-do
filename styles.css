@@ -33,7 +33,7 @@ body {
   color: white;
 }
 
-#container p {
+#container #mantra {
   padding: 5px 30px;
   color: white;
   font-style: italic;
