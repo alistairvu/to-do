@@ -33,7 +33,6 @@ const addToDo = (e) => {
 const doSearch = (e) => {
   const { value } = e.target
   const arr = JSON.parse(window.localStorage.getItem("to-do"))
-  console.log(value.trim().length)
   if (value.trim().length > 0) {
     const filtered = arr.filter((x) => x.includes(value))
     if (filtered.length > 0) {
