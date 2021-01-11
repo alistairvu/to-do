@@ -19,12 +19,16 @@ const displayDate = () => {
 }
 
 const displayMantra = async () => {
-  const mantraId = Math.floor(Math.random() * 35)
-  const res = await fetch(
-    `https://calm-journey-64194.herokuapp.com/${mantraId}`
-  )
-  const mantra = await res.json()
-  mantraDisplay.innerHTML = mantra
+  try {
+    const mantraId = Math.floor(Math.random() * 35)
+    const res = await fetch(
+      `https://calm-journey-64194.herokuapp.com/${mantraId}`
+    )
+    const mantra = await res.json()
+    mantraDisplay.innerHTML = mantra
+  } catch (e) {
+    mantraDisplay.innerHTML = "Your life is about to be incredible."
+  }
 }
 
 const addToDo = (e) => {
