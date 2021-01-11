@@ -1,5 +1,12 @@
 var cacheName = "to-do"
-var filesToCache = ["/", "./index.html", "./styles.css", "/js/index.js"]
+var filesToCache = [
+  "/",
+  "./index.html",
+  "./styles.css",
+  "./js/index.js",
+  "./js/to-do.js",
+  "./js/utils.js",
+]
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener("install", function (e) {
