@@ -24,7 +24,6 @@ const displayMantra = async () => {
     `https://calm-journey-64194.herokuapp.com/${mantraId}`
   )
   const mantra = await res.json()
-  console.log(mantra)
   mantraDisplay.innerHTML = mantra
 }
 
