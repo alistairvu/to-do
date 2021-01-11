@@ -49,7 +49,7 @@ class ToDo extends HTMLElement {
   delete(e) {
     const oldArr = JSON.parse(window.localStorage.getItem("to-do"))
     const newArr = oldArr.filter(
-      (item, index) => index !== parseInt(this.index)
+      (item, index) => item !== this.item && index !== parseInt(this.index)
     )
     window.localStorage.setItem("to-do", JSON.stringify(newArr))
     render(newArr)
