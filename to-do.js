@@ -47,15 +47,12 @@ class ToDo extends HTMLElement {
   }
 
   delete(e) {
-    const del = confirm("Do you want to delete?")
-    if (del) {
-      const oldArr = JSON.parse(window.localStorage.getItem("to-do"))
-      const newArr = oldArr.filter(
-        (item, index) => index !== parseInt(this.index)
-      )
-      window.localStorage.setItem("to-do", JSON.stringify(newArr))
-      render(newArr)
-    }
+    const oldArr = JSON.parse(window.localStorage.getItem("to-do"))
+    const newArr = oldArr.filter(
+      (item, index) => index !== parseInt(this.index)
+    )
+    window.localStorage.setItem("to-do", JSON.stringify(newArr))
+    render(newArr)
   }
 }
 

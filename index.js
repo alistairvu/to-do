@@ -57,8 +57,11 @@ const doSearch = (e) => {
 }
 
 const clearToDo = (e) => {
-  window.localStorage.setItem("to-do", JSON.stringify([]))
-  render([])
+  const clr = confirm("Do you want to clear all?")
+  if (clr) {
+    window.localStorage.setItem("to-do", JSON.stringify([]))
+    render([])
+  }
 }
 
 // first render
