@@ -6,7 +6,7 @@ const CACHE = "pwabuilder-page"
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
 const offlineFallbackPages = [
-  "/offline.html",
+  "/index.html",
   "/offline-background.jpg",
   "/styles.css",
   "/js/index.js",
@@ -45,7 +45,7 @@ self.addEventListener("fetch", (event) => {
           return networkResp
         } catch (error) {
           const cache = await caches.open(CACHE)
-          const cachedResp = await cache.match("./offline.html")
+          const cachedResp = await cache.match("./index.html")
           return cachedResp
         }
       })()
