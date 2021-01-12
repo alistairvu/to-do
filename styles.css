@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url("https://source.unsplash.com/1600x900/daily?nature/featured");
+  background-image: url("./offline-background.jpg");
   background-size: cover;
   overflow: hidden;
 }
