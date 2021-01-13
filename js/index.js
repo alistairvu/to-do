@@ -5,7 +5,7 @@ import { render } from "./utils.js"
 const todaysDate = document.getElementById("todays-date")
 const searchBar = document.getElementById("search-bar")
 const toDoInput = document.getElementById("to-do-add")
-const clearBtn = document.getElementById("clear-btn")
+const addBtn = document.getElementById("add-btn")
 const mantraDisplay = document.getElementById("mantra")
 
 // functions
@@ -31,16 +31,13 @@ const displayMantra = async () => {
   }
 }
 
-const addToDo = (e) => {
-  if (e.key === "Enter") {
-    const { value } = e.target
-    if (value.trim().length > 0) {
-      const currArr = JSON.parse(window.localStorage.getItem("to-do") || "[]")
-      const newArr = [...currArr, value]
-      window.localStorage.setItem("to-do", JSON.stringify(newArr))
-      render(newArr)
-      toDoInput.value = ""
-    }
+const addToDo = (value) => {
+  if (value.trim().length > 0) {
+    const currArr = JSON.parse(window.localStorage.getItem("to-do") || "[]")
+    const newArr = [...currArr, value]
+    window.localStorage.setItem("to-do", JSON.stringify(newArr))
+    render(newArr)
+    toDoInput.value = ""
   }
 }
 
@@ -59,14 +56,6 @@ const doSearch = (e) => {
   }
 }
 
-const clearToDo = (e) => {
-  const clr = confirm("Do you want to clear all?")
-  if (clr) {
-    window.localStorage.setItem("to-do", JSON.stringify([]))
-    render([])
-  }
-}
-
 // first render
 displayDate()
 displayMantra()
@@ -74,5 +63,15 @@ render(JSON.parse(window.localStorage.getItem("to-do")) || [])
 
 // event listeners
 searchBar.addEventListener("keyup", doSearch)
-toDoInput.addEventListener("keyup", addToDo)
-clearBtn.addEventListener("click", clearToDo)
+
+toDoInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    const { value } = e.target
+    addToDo(value)
+  }
+})
+
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  addToDo(toDoInput.value)
+})
